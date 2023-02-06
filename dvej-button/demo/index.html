@@ -18,9 +18,7 @@
     const title = 'Hello owc World!';
     render(
       html`
-        <dvej-button .title=${title}>
-          some light-dom
-        </dvej-button>
+        <dvej-button text='${title}'></dvej-button>
       `,
       document.querySelector('#demo')
     );

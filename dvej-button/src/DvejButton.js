@@ -1,33 +1,27 @@
-import { html, css, LitElement } from 'lit';
+import { html, LitElement } from 'lit';
+import {style} from './styles.js';
+import {bgColors} from './bg_colors.js'
 
 export class DvejButton extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--dvej-button-text-color, #000);
-    }
-  `;
+
+  static styles = [style, bgColors];
 
   static properties = {
-    header: { type: String },
-    counter: { type: Number },
+    text: { type: String },
+    color: { type: String },
+    size: { type: String }
   };
 
   constructor() {
     super();
-    this.header = 'Hey there';
-    this.counter = 5;
-  }
-
-  __increment() {
-    this.counter += 1;
+    this.text = 'default';
+    this.color = 'bg-default';
+    this.size = 'default';
   }
 
   render() {
     return html`
-      <h2>${this.header} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
+    <button class="${this.size}, ${this.color}">${this.text}</button>
     `;
   }
 }
